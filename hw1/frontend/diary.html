@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>My Diary</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="diary.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js"
+      integrity="sha512-aoTNnqZcT8B4AmeCFmiSnDlc4Nj/KPaZyB5G7JnOnUEkdNpCZs1LCankiYi01sLTyWy+m2P+W4XM+BuQ3Q4/Dg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <h1>My Diary</h1>
+    <button id="diary_add" tabindex="5">新增日記本</button>
+    <section id="diaries"></section>
+  </body>
+  <template id="diaries-template">
+      <div id="" class="diary_open">
+        <p class="diary-date">diary date</p>
+        <p class="diary-tag">diary tag</p>
+        <p class="diary-feeling">diary feeling</p>
+        <!-- <p class="diary-content">diary content</p> -->
+      </div>
+  </template>
+</html>

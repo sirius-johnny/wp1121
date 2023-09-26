@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Edit Diary</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="edit_diary.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js"
+      integrity="sha512-aoTNnqZcT8B4AmeCFmiSnDlc4Nj/KPaZyB5G7JnOnUEkdNpCZs1LCankiYi01sLTyWy+m2P+W4XM+BuQ3Q4/Dg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <h1>編輯模式</h1>
+    <div id="date-input-container">
+      <textarea id="date-input" rows="3" cols="80" placeholder="若要手動輸入日期, 格式: 年年年年.月月.日日 (星期幾), ex: 2023.09.27 (三)" ></textarea>
+    </div>
+    <div id="tag-input-container">
+      <textarea id="tag-input" rows="3" cols="80" placeholder="標籤" ></textarea>
+    </div>
+    <div id="feeling-input-container">
+      <textarea id="feeling-input" rows="3" cols="80" placeholder="心情" ></textarea>
+    </div>
+    <div id="content-input-container">
+      <textarea id="content-input" rows="15" cols="80" placeholder="日記內容" ></textarea>
+    </div>
+    <button id="save_diary" tabindex="5">儲存</button>
+    <button id="cancel_diary" tabindex="5">取消</button>
+  </body>
+</html>
