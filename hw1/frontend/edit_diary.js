@@ -1,3 +1,4 @@
+/* global axios */
 const instance = axios.create({
   baseURL: "http://localhost:8000/api",
 });
@@ -76,7 +77,7 @@ function setupEventListeners_add() {
     }
 
     try {
-      const diary = await createDiary({date, tag, feeling, content});
+      await createDiary({date, tag, feeling, content});
       // alert("Create!");
       window.location.href='diary.html';
     } catch (error) {

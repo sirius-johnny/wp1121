@@ -1,6 +1,4 @@
-import text from "body-parser/lib/types/text.js";
 import DiaryModel from "../models/diaryModel.js";
-import { Model } from "mongoose";
 
 // Get all diaries
 export const getDiaries = async (req, res) => {
