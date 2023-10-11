@@ -1,25 +1,25 @@
-import { useRef, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+// import { useRef, useState } from "react";
+// import { Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-import AddIcon from "@mui/icons-material/Add";
-import DeleteIcon from "@mui/icons-material/Delete";
-import Button from "@mui/material/Button";
-import ClickAwayListener from "@mui/material/ClickAwayListener";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import Input from "@mui/material/Input";
+// import AddIcon from "@mui/icons-material/Add";
+// import DeleteIcon from "@mui/icons-material/Delete";
+// import Button from "@mui/material/Button";
+// import ClickAwayListener from "@mui/material/ClickAwayListener";
+// import Divider from "@mui/material/Divider";
+// import IconButton from "@mui/material/IconButton";
+// import Input from "@mui/material/Input";
 import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
+// import Typography from "@mui/material/Typography";
 
-import useCards from "@/hooks/useCards";
-import { deleteList, updateList } from "@/utils/client";
-import Card from "./Card";
+// import useCards from "@/hooks/useCards";
+// import { deleteList, updateList } from "@/utils/client";
+// import Card from "./Card";
 import type { CardProps } from "./Card";
-import CardDialog from "./CardDialog";
-import CardList_showCard from "./CardList_showCard";
-import ShowList from "./ShowList";
-import { main } from "./ShowList";
+// import CardDialog from "./CardDialog";
+// import CardList_showCard from "./CardList_showCard";
+// import ShowList from "./ShowList";
+// import { main } from "./ShowList";
 
 export type CardListProps = {
   id: string;
@@ -29,52 +29,51 @@ export type CardListProps = {
 };
 
 export default function CardList({ id, name, description, cards }: CardListProps) {
-  const [openNewCardDialog, setOpenNewCardDialog] = useState(false);
-  const [editingName, setEditingName] = useState(false);
-  const [editingDescription, setEditingDescription] = useState(false);
-  const { fetchLists } = useCards();
-  const inputRef = useRef<HTMLInputElement>(null);
-  const inputRef_Des = useRef<HTMLInputElement>(null);
+  // const [openNewCardDialog, setOpenNewCardDialog] = useState(false);
+  // const [editingName, setEditingName] = useState(false);
+  // const [editingDescription, setEditingDescription] = useState(false);
+  // const { fetchLists } = useCards();
+  // const inputRef = useRef<HTMLInputElement>(null);
+  // const inputRef_Des = useRef<HTMLInputElement>(null);
 
-  const handleUpdateName = async () => {
-    if (!inputRef.current) return;
+  // const handleUpdateName = async () => {
+  //   if (!inputRef.current) return;
 
-    const newName = inputRef.current.value;
-    if (newName !== name) {
-      try {
-        await updateList(id, { name: newName });
-        fetchLists();
-      } catch (error) {
-        alert("Error: Failed to update list name");
-      }
-    }
-    setEditingName(false);
-  };
+  //   const newName = inputRef.current.value;
+  //   if (newName !== name) {
+  //     try {
+  //       await updateList(id, { name: newName });
+  //       fetchLists();
+  //     } catch (error) {
+  //       alert("Error: Failed to update list name");
+  //     }
+  //   }
+  //   setEditingName(false);
+  // };
 
-  const handleUpdateDescription = async () => {
-    if (!inputRef_Des.current) return;
+  // const handleUpdateDescription = async () => {
+  //   if (!inputRef_Des.current) return;
 
-    const newDescription = inputRef_Des.current.value;
-    if (newDescription !== description) {
-      try {
-        await updateList(id, { description: newDescription });
-        fetchLists();
-      } catch (error) {
-        alert("Error: Failed to update list name");
-      }
-    }
-    setEditingDescription(false);
-  };
+  //   const newDescription = inputRef_Des.current.value;
+  //   if (newDescription !== description) {
+  //     try {
+  //       await updateList(id, { description: newDescription });
+  //       fetchLists();
+  //     } catch (error) {
+  //       alert("Error: Failed to update list name");
+  //     }
+  //   }
+  //   setEditingDescription(false);
+  // };
 
-  const handleDelete = async () => {
-    try {
-      await deleteList(id);
-      fetchLists();
-    } catch (error) {
-      alert("Error: Failed to delete list");
-    }
-  };
-
+  // const handleDelete = async () => {
+  //   try {
+  //     await deleteList(id);
+  //     fetchLists();
+  //   } catch (error) {
+  //     alert("Error: Failed to delete list");
+  //   }
+  // };
 
   return (
     <>
@@ -84,6 +83,7 @@ export default function CardList({ id, name, description, cards }: CardListProps
             <img src="./src/components/playlist.png"/>
             <div>{cards.length} songs</div>
             <div>{name}</div>
+            <div>{description}</div>
           </Link>
         </div>
       </Paper>
