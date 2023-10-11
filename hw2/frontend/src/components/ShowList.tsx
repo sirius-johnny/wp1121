@@ -17,7 +17,7 @@ import { getList } from "@/utils/client";
 import type { CardProps } from "./Card";
 // import CardDialog from "./CardDialog";
 // import { get } from "http";
-import { CardData } from "@lib/shared_types"; 
+// import type { CardData } from "@lib/shared_types"; 
 // import { List } from "@mui/material";
 
 export type CardListProps = {
@@ -29,7 +29,7 @@ export type CardListProps = {
 
 let name:string;
 let description:string;
-let cards:CardData[];
+// let cards:CardData[];
 
 export const main = async (list_id:string) => {
   // const searchURL = window.location.search;
@@ -38,7 +38,7 @@ export const main = async (list_id:string) => {
   const inst = iin.data;
   name = inst.name;
   description = inst.description;
-  cards = inst.cards;
+  // cards = inst.cards;
   return ;
 }
 
@@ -57,7 +57,7 @@ export default function ShowList() {
         <h1>description={description}</h1>
       </>
     );
-};
+}
 
 
 

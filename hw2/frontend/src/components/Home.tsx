@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+// import { Routes, Route } from "react-router-dom";
 
-import { Add as AddIcon } from "@mui/icons-material";
+// import { Add as AddIcon } from "@mui/icons-material";
 import { Button } from "@mui/material";
 
 import CardList from "@/components/CardList";
 import NewListDialog from "@/components/NewListDialog";
 import useCards from "@/hooks/useCards";
-import Products from "@/components/ShowList";
+// import Products from "@/components/ShowList";
 
 export default function Home() {
     const { lists, fetchLists, fetchCards } = useCards();
