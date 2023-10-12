@@ -52,7 +52,7 @@ const AuthLayout = () => {
       /* They can be created via the `toast` function provided by `useToast()` */
       /* Reference: https://ui.shadcn.com/docs/components/toast#usage */
       if(confirmPassword!==password){
-        alert("Passwords do not match");
+        toast({description: "Passwords do not match"});
       }
       else{
         register(username, password);
