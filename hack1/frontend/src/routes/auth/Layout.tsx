@@ -73,7 +73,7 @@ const AuthLayout = () => {
               <TabsTrigger
                 asChild
                 key={tab.title}
-                value={location.pathname}
+                value={tab.path}
                 className="last-of-type:border-r-0"
                 data-testid={`tab-${tab.path}`}
               >
@@ -115,7 +115,7 @@ const AuthLayout = () => {
                 type="text"
                 name="username"
                 autoComplete="username"
-                onChange={() => setUsername(username)}
+                onChange={(e) => setUsername(e.target.value)}
                 placeholder="Enter Username"
                 required={true}
               />
@@ -134,9 +134,9 @@ const AuthLayout = () => {
                 type="password"
                 name="password"
                 autoComplete="current-password"
-                onChange={() => setPassword(password)}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter Password"
-                required={true}
+                required={true} 
               />
               {/* End of TODO 1.4 */}
             </div>
@@ -159,9 +159,9 @@ const AuthLayout = () => {
                 type="password"
                 name="confirm-password"
                 autoComplete="new-password"
-                onChange={() => setConfirmPassword(confirmPassword)}
+                onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="Confirm Password"
-                required={true}
+                required={true} // 這邊沒處理乾淨 記得修
               />
               {/* End of TODO 1.5 */}
             </div>

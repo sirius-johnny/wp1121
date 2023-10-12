@@ -57,8 +57,8 @@ const View = (): React.ReactNode => {
       {/* TODO 2.1: Render Post With `PostCard` and `PostContext` (3%) */}
       {/* Hint 2.1.1: Pass correct arguments to `PostCard` component */}
       {/* Hint 2.1.2: Arguments `post` should be Modified */}
-      <PostCard post={null} />
-      {/* End TODO 2.1 */}
+      <PostCard post={post} />
+      {/* End  */}
 
       <div className="mt-auto">
         {/* (2/3) TODO 2.2: Navigation with `ViewFooter` Buttons (8%) */}
@@ -72,13 +72,13 @@ const View = (): React.ReactNode => {
           upvoteClickHandler={() => {}}
           hasDownvoted={false}
           hasUpvoted={false}
-          nextClickHandler={() => {}}
-          prevClickHandler={() => {}}
+          nextClickHandler={() => {handleNextClick}}
+          prevClickHandler={() => {handlePrevClick}}
           totalVotes={0}
           loading={false}
         />
         {/* End (3/3) TODO 2.4 */}
-        {/* End (2/3) TODO 2.2 */}
+        {/* End (2/3)  */}
       </div>
     </>
   ) : (
