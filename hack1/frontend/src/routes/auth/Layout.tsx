@@ -77,7 +77,7 @@ const AuthLayout = () => {
                 className="last-of-type:border-r-0"
                 data-testid={`tab-${tab.path}`}
               >
-                <NavLink to={tab.title} />
+                <NavLink to={`/${tab.path}`}>{tab.title}</NavLink>
               </TabsTrigger>
               /* End of TODO 1.3 */
             ))}
