@@ -73,11 +73,11 @@ const AuthLayout = () => {
               <TabsTrigger
                 asChild
                 key={tab.title}
-                value=""
+                value={location.pathname}
                 className="last-of-type:border-r-0"
                 data-testid={`tab-${tab.path}`}
               >
-                <NavLink to="" />
+                <NavLink to={tab.title} />
               </TabsTrigger>
               /* End of TODO 1.3 */
             ))}
@@ -90,7 +90,7 @@ const AuthLayout = () => {
             {/* The logo should be vscoddit.svg in the public folder. */}
             {/* The logo should have alt text "VSCoddit Logo". */}
             {/* The title should be "VSCoddit" */}
-            <img data-testid="header-logo" className="h-5 w-5 brightness-200" src='./frontend/public/vscoddit.svg'/>
+            <img data-testid="header-logo" className="h-5 w-5 brightness-200" src='./public/vscoddit.svg' alt='VSCoddit Logo'/>
             <span data-testid="header-title" >VSCoddit</span>
             {/* END of TODO 1.1 */}
           </CardTitle>
@@ -115,6 +115,9 @@ const AuthLayout = () => {
                 type="text"
                 name="username"
                 autoComplete="username"
+                onChange={() => setUsername(username)}
+                placeholder="Enter Username"
+                required={true}
               />
               {/* End of TODO 1.4 */}
             </div>
@@ -131,6 +134,9 @@ const AuthLayout = () => {
                 type="password"
                 name="password"
                 autoComplete="current-password"
+                onChange={() => setPassword(password)}
+                placeholder="Enter Password"
+                required={true}
               />
               {/* End of TODO 1.4 */}
             </div>
@@ -153,6 +159,9 @@ const AuthLayout = () => {
                 type="password"
                 name="confirm-password"
                 autoComplete="new-password"
+                onChange={() => setConfirmPassword(confirmPassword)}
+                placeholder="Confirm Password"
+                required={true}
               />
               {/* End of TODO 1.5 */}
             </div>
