@@ -40,7 +40,7 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
   /*            https://reactrouter.com/en/6.16.0/hooks/use-location */
   /*            https://github.com/remix-run/history/blob/main/docs/api-reference.md#location */
   const useEffect = async () => {
-    if(!authenticated && location.pathname!=="/login" && location.pathname!=="/register"){
+    if(!authenticated && location.pathname!=='/login' && location.pathname!=='/register'){
       navigate('/login');
     }
   };
