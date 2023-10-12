@@ -161,7 +161,7 @@ const AuthLayout = () => {
                 autoComplete="new-password"
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="Confirm Password"
-                required={location.pathname === '/register'} // 這邊沒處理乾淨 記得修
+                required={location.pathname === '/register'} 
               />
               {/* End of TODO 1.5 */}
             </div>
