@@ -13,6 +13,7 @@ import { UserService } from '@/services/userService';
 type UserContextType = {
   user: User | null;
   authenticated: boolean;
+  useEffect: () => void;
   login: (username: string, password: string) => void;
   register: (username: string, password: string) => void;
   upvote: (postId: string) => void;
@@ -38,7 +39,7 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
   /* Reference: https://reactrouter.com/en/6.16.0/hooks/use-navigate */
   /*            https://reactrouter.com/en/6.16.0/hooks/use-location */
   /*            https://github.com/remix-run/history/blob/main/docs/api-reference.md#location */
-  const useEffect = () => {
+  const useEffect = async () => {
     if(!authenticated){
       navigate('/login');
     }
@@ -119,6 +120,7 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
       value={{
         user,
         authenticated,
+        useEffect,
         login,
         register,
         upvote,
