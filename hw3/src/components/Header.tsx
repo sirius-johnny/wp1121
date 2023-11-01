@@ -22,23 +22,12 @@ export default function Header() {
   return (
     // aside is a semantic html tag for side content
     <aside className="flex h-screen flex-col justify-between px-6 py-6">
-      <div className="flex flex-col gap-2">
-        <div className="p-2">
-          <Link href="/">
-            切換使用者
-          </Link>
-        </div>
-        <HeaderButton Icon={Home} text="Home" active />
-        {/* <HeaderButton Icon={Search} text="Explore" />
-        <HeaderButton Icon={Bell} text="Notifications" />
-        <HeaderButton Icon={Mail} text="Messages" />
-        <HeaderButton Icon={FileText} text="Lists" />
-        <HeaderButton Icon={Bookmark} text="Bookmarks" />
-        <HeaderButton Icon={Users} text="Communities" />
-        <HeaderButton Icon={User} text="Profile" />
-        <HeaderButton Icon={MoreHorizontal} text="More" /> */}
-      </div>
       <ProfileButton />
+      <div className="flex flex-col gap-2">
+        <Link href="/">
+          <HeaderButton Icon={Home} text="切換使用者" active />
+        </Link>
+      </div>
     </aside>
   );
 }

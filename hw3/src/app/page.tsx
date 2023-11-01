@@ -133,12 +133,12 @@ export default async function Home({
     .leftJoin(likedSubquery, eq(tweetsTable.id, likedSubquery.tweetId))
     .execute();
 
-  var tweets_lens = (!tweets)? 0: tweets.length+1;
+  var tweets_lens = (!tweets)? 1: tweets.length+1; // 這邊要思考一下ㄟ
 
   return (
     <>
       <div className="flex h-screen w-full max-w-2xl flex-col overflow-scroll pt-2">
-        <h1 className="mb-2 bg-white px-4 text-xl font-bold">Home</h1>
+        <h1 className="mb-2 bg-white px-4 text-xl font-bold">揪團APP</h1>
         <AddNewTweet 
           tweets_len={tweets_lens} 
         />

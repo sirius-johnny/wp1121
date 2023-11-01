@@ -10,10 +10,14 @@ export default function useTweet() {
     handle,
     content,
     replyToTweetId,
+    from_date,
+    to_date,
   }: {
     handle: string;
     content: string;
     replyToTweetId?: number;
+    from_date?: string;     // 考量到這個資訊只有在創建活動時需要顯示，留言區的tweets都不用輸入此資料
+    to_date?: string;       // 考量到這個資訊只有在創建活動時需要顯示，留言區的tweets都不用輸入此資料
   }) => {
     setLoading(true);
 
@@ -23,6 +27,8 @@ export default function useTweet() {
         handle,
         content,
         replyToTweetId,
+        from_date,
+        to_date,
       }),
     });
 

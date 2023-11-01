@@ -57,6 +57,8 @@ export const tweetsTable = pgTable(
       }),
     replyToTweetId: integer("reply_to_tweet_id"),
     createdAt: timestamp("created_at").default(sql`now()`),
+    from_date: varchar("from_date", {length: 50}),  // 新增的
+    to_date: varchar("to_date", {length: 50}),      // 新增的
   },
   (table) => ({
     userHandleIndex: index("user_handle_index").on(table.userHandle),

@@ -3,24 +3,25 @@
 import { useState } from "react";
 import type { EventHandler, MouseEvent } from "react";
 
-import { Heart, Check } from "lucide-react";
+import { Check } from "lucide-react";
 
 import useLike from "@/hooks/useLike";
 import { cn } from "@/lib/utils";
+import { like } from "drizzle-orm";
 
-type LikeButtonProps = {
+type JoinButtonProps = {
   initialLikes: number;
   initialLiked?: boolean;
   tweetId: number;
   handle?: string;
 };
 
-export default function LikeButton({
+export default function JoinButton({
   initialLikes,
   initialLiked,
   tweetId,
   handle,
-}: LikeButtonProps) {
+}: JoinButtonProps) {
   const [liked, setLiked] = useState(initialLiked);
   const [likesCount, setLikesCount] = useState(initialLikes);
   const { likeTweet, unlikeTweet, loading } = useLike();
@@ -50,6 +51,11 @@ export default function LikeButton({
     }
   };
 
+	const show_word = () => {
+		if(liked){return "已經參加";}
+		else {return "我要參加";}
+	}
+
   return (
     <button
       className={cn(
@@ -61,13 +67,12 @@ export default function LikeButton({
     >
       <div
         className={cn(
-          "flex items-center gap-1 rounded-full p-1.5 transition-colors duration-300 hover:bg-brand/10",
+          "flex items-center gap-1 rounded-full p-3 transition-colors duration-300 hover:bg-brand/10",
           liked && "bg-brand/10",
         )}
       >
-        <Check size={18} />
+        {show_word()}
       </div>
-      {/* {likesCount > 0 && likesCount} */}
     </button>
   );
 }

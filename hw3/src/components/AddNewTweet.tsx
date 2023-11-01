@@ -19,12 +19,7 @@ import { Label } from "@/components/ui/label";
 import useTweet from "@/hooks/useTweet";
 import useUserInfo from "@/hooks/useUserInfo";
 import { cn, validateContent } from "@/lib/utils";
-// import { sql } from "drizzle-orm";
-import { ne } from "drizzle-orm";
-
-import { tweetsTable } from "@/db/schema";
-import { db } from "@/db";
-import { Maximize } from "lucide-react";
+import useLike from "@/hooks/useLike";
 
 type Jump_ID = {
 	tweets_len: number;
@@ -43,6 +38,8 @@ export default function AddNewTweet({
 	const [contentError, setContentError] = useState(false);
 	const [fromError, setFromError] = useState(false);
 	const [toError, setToError] = useState(false);
+
+	const { likeTweet } = useLike();
 
 	useEffect(() => {
     const content = searchParams.get("content");
@@ -87,9 +84,12 @@ export default function AddNewTweet({
 	}
 
 	const handleTweet = async () => {
+		const jump_id = tweets_len + 1;
 		const username = searchParams.get("username");
     const handle = searchParams.get("handle");
     const content = contentInputRef.current?.value;
+		const from_date = fromInputRef.current?.value;
+		const to_date = toInputRef.current?.value;
     if (!content) {
 			alert("請輸入標題!!!")
 			return;
@@ -100,17 +100,23 @@ export default function AddNewTweet({
       await postTweet({
         handle,
         content,
+				from_date,
+				to_date,
       });
 
-			// 新增完活動後要直接跳轉進去該頁面，有需要在這裡處理??但這邊不能call db!!
-			// const jump_to_id = 14;
+			await likeTweet({
+        tweetId: jump_id,
+        userHandle: handle,
+      });
+
 			const params = new URLSearchParams(searchParams);
    		params.set("username", username!);
     	params.set("handle", handle!);
-			router.push(`${pathname}${"tweet/"}${tweets_len+1}?${params.toString()}`);
+			router.push(`${pathname}${"tweet/"}${jump_id}?${params.toString()}`);
 			
 			setDialogOpen(false);
 			contentInputRef.current.value="";
+			
     } catch (e) {
       console.error(e);
       alert("Error posting tweet");
@@ -141,6 +147,7 @@ export default function AddNewTweet({
 						</DialogDescription>
 					</DialogHeader>
 					<div className="grid gap-4 py-4">
+						{/* content */}
 						<div className="grid grid-cols-4 items-center gap-4">
 							<Label htmlFor="name" className="text-right">
 								標題
@@ -157,27 +164,40 @@ export default function AddNewTweet({
 								</p>
 							)}
 						</div>
-						{/* <div className="grid grid-cols-4 items-center gap-4">
+						{/* from_date */}
+						<div className="grid grid-cols-4 items-center gap-4">
 							<Label htmlFor="name" className="text-right">
-								Handle
+								開始日期
 							</Label>
-							<div className="col-span-3 flex items-center gap-2">
-								<span>@</span>
-								<Input
-									placeholder="web.prog"
-									defaultValue={searchParams.get("handle") ?? ""}
-									className={cn(handleError && "border-red-500")}
-									ref={handleInputRef}
-								/>
-							</div>
-							{handleError && (
+							<Input
+								placeholder="YYYY-MM-DD HH"
+								defaultValue={searchParams.get("from_date") ?? ""}
+								className={cn(fromError && "border-red-500", "col-span-3")}
+								ref={fromInputRef}
+							/>
+							{fromError && (
 								<p className="col-span-3 col-start-2 text-xs text-red-500">
-									Invalid handle, use only{" "}
-									<span className="font-mono">[a-z0-9\._-]</span>, must be between
-									1 and 25 characters long.
+									from_date格式錯誤
 								</p>
 							)}
-						</div> */}
+						</div>
+						{/* to_date */}
+						<div className="grid grid-cols-4 items-center gap-4">
+							<Label htmlFor="name" className="text-right">
+								結束日期
+							</Label>
+							<Input
+								placeholder="YYYY-MM-DD HH"
+								defaultValue={searchParams.get("to_date") ?? ""}
+								className={cn(toError && "border-red-500", "col-span-3")}
+								ref={toInputRef}
+							/>
+							{toError && (
+								<p className="col-span-3 col-start-2 text-xs text-red-500">
+									to_date格式錯誤
+								</p>
+							)}
+						</div>
 					</div>
 					<DialogFooter>
 						<Button onClick={handleTweet}>新增</Button>

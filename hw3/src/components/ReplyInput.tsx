@@ -17,12 +17,14 @@ export default function ReplyInput({
   replyToTweetId,
   replyToHandle,
 }: ReplyInputProps) {
-  const { handle } = useUserInfo();
+  const { username, handle } = useUserInfo(); // 改了，多呼叫username
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { postTweet, loading } = useTweet();
 
   const handleReply = async () => {
     const content = textareaRef.current?.value;
+    const from_date = "default";
+    const to_date = "default";
     if (!content) return;
     if (!handle) return;
 
@@ -31,6 +33,8 @@ export default function ReplyInput({
         handle,
         content,
         replyToTweetId,
+        from_date,
+        to_date,
       });
       textareaRef.current.value = "";
       // this triggers the onInput event on the growing textarea
@@ -59,7 +63,7 @@ export default function ReplyInput({
           ref={textareaRef}
           wrapperClassName="col-start-2 row-start-2"
           className="bg-transparent text-xl outline-none placeholder:text-gray-500"
-          placeholder="Tweet your reply"
+          placeholder={username +" 留下你的想法"} // 改了，加入username
         />
       </div>
       <div className="p-4 text-end">

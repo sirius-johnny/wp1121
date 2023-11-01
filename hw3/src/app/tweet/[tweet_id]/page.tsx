@@ -10,7 +10,7 @@ import {
   Share,
 } from "lucide-react";
 
-import LikeButton from "@/components/LikeButton";
+import JoinButton from "@/components/JoinButton";
 import ReplyInput from "@/components/ReplyInput";
 import TimeText from "@/components/TimeText";
 import Tweet from "@/components/Tweet";
@@ -71,6 +71,8 @@ export default async function TweetPage({
       content: tweetsTable.content,
       userHandle: tweetsTable.userHandle,
       createdAt: tweetsTable.createdAt,
+      from_date: tweetsTable.from_date,
+      to_date: tweetsTable.to_date,
     })
     .from(tweetsTable)
     .where(eq(tweetsTable.id, tweet_id_num))
@@ -133,6 +135,8 @@ export default async function TweetPage({
     likes: numLikes,
     createdAt: tweetData.createdAt,
     liked: Boolean(liked),
+    from_date: tweetData.from_date, // 這個必須要顯示出來，原揪團活動的部分
+    to_date: tweetData.to_date,     // 這個必須要顯示出來，原揪團活動的部分
   };
 
   // The following code is almost identical to the code in src/app/page.tsx
@@ -210,26 +214,22 @@ export default async function TweetPage({
           <article className="mt-3 whitespace-pre-wrap text-xl">
             {tweet.content}
           </article>
+          {/* 這邊是處理from_date & to_date的地方 */}
+          <div>
+            {"From " + tweet.from_date + " to " + tweet.to_date}
+          </div>
+          {/* 這邊是處理from_date & to_date的地方 */}
           <time className="my-4 block text-sm text-gray-500">
             <TimeText date={tweet.createdAt} format="h:mm A · D MMM YYYY" />
           </time>
           <Separator />
           <div className="my-2 flex items-center justify-between gap-4 text-gray-400">
-            <button className="rounded-full p-1.5 transition-colors duration-300 hover:bg-brand/10 hover:text-brand">
-              <MessageCircle size={20} className="-scale-x-100" />
-            </button>
-            <button className="rounded-full p-1.5 transition-colors duration-300 hover:bg-brand/10 hover:text-brand">
-              <Repeat2 size={22} />
-            </button>
-            <LikeButton
+            <JoinButton
               handle={handle}
               initialLikes={tweet.likes}
               initialLiked={tweet.liked}
               tweetId={tweet.id}
             />
-            <button className="rounded-full p-1.5 transition-colors duration-300 hover:bg-brand/10 hover:text-brand">
-              <Share size={18} />
-            </button>
           </div>
           <Separator />
         </div>
