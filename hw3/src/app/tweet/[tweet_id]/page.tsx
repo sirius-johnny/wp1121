@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-import { eq, desc, sql, and } from "drizzle-orm";
+import { eq, desc, sql, and, asc } from "drizzle-orm";
 import {
   ArrowLeft,
   MessageCircle,
@@ -13,7 +13,7 @@ import {
 import JoinButton from "@/components/JoinButton";
 import ReplyInput from "@/components/ReplyInput";
 import TimeText from "@/components/TimeText";
-import Tweet from "@/components/Tweet";
+import Reply from "@/components/Reply";
 import { Separator } from "@/components/ui/separator";
 import { db } from "@/db";
 import { likesTable, tweetsTable, usersTable } from "@/db/schema";
@@ -174,7 +174,7 @@ export default async function TweetPage({
     })
     .from(tweetsTable)
     .where(eq(tweetsTable.replyToTweetId, tweet_id_num))
-    .orderBy(desc(tweetsTable.createdAt))
+    .orderBy(asc(tweetsTable.createdAt))
     .innerJoin(usersTable, eq(tweetsTable.userHandle, usersTable.handle))
     .leftJoin(likesSubquery, eq(tweetsTable.id, likesSubquery.tweetId))
     .leftJoin(likedSubquery, eq(tweetsTable.id, likedSubquery.tweetId))
@@ -233,10 +233,10 @@ export default async function TweetPage({
           </div>
           <Separator />
         </div>
-        <ReplyInput replyToTweetId={tweet.id} replyToHandle={tweet.handle} />
+        <ReplyInput replyToTweetId={tweet.id} replyToHandle={tweet.handle} liked={tweet.liked}/>
         <Separator />
         {replies.map((reply) => (
-          <Tweet
+          <Reply
             key={reply.id}
             id={reply.id}
             username={username}

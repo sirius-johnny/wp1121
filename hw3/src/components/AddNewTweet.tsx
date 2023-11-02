@@ -20,7 +20,6 @@ import useTweet from "@/hooks/useTweet";
 import useUserInfo from "@/hooks/useUserInfo";
 import { cn, validateContent } from "@/lib/utils";
 import useLike from "@/hooks/useLike";
-
 type Jump_ID = {
 	tweets_len: number;
 };
@@ -90,11 +89,68 @@ export default function AddNewTweet({
     const content = contentInputRef.current?.value;
 		const from_date = fromInputRef.current?.value;
 		const to_date = toInputRef.current?.value;
+		// 關於輸入格式的合法性確認
     if (!content) {
 			alert("請輸入標題!!!")
 			return;
 		}	
     if (!handle) return;
+
+		if(!from_date){
+			alert("請輸入活動起始日期");
+		}
+		else {
+			if (from_date?.length!=13 || from_date[4]!="-" || from_date[7]!="-" || from_date[10]!=" ") {
+				alert("請輸入合法時間格式");
+			}
+			else {
+				var from_year = parseInt(from_date[0]+from_date[1]+from_date[2]+from_date[3]);
+				var from_month = parseInt(from_date[5]+from_date[6]);
+				var from_day = parseInt(from_date[8]+from_date[9]);
+				var from_hour = parseInt(from_date[11]+from_date[12]);
+				if(from_year<1){
+					alert("起始日期年份不合法");
+				}
+				if(from_month<1 || from_month>12){
+					alert("起始日期月份不合法");
+				}
+				if(from_day<1 || from_day>31){
+					alert("起始日期日子不合法");
+				}
+				if(from_hour<0 || from_hour>24){
+					alert("起始日期小時不合法");
+				}
+			}
+		}
+
+		if(!to_date){
+			alert("請輸入活動起始日期");
+		}
+		else {
+			if (to_date?.length!=13 || to_date[4]!="-" || to_date[7]!="-" || to_date[10]!=" ") {
+				alert("請輸入合法時間格式");
+			}
+			else {
+				var to_year = parseInt(to_date[0]+to_date[1]+to_date[2]+to_date[3]);
+				var to_month = parseInt(to_date[5]+to_date[6]);
+				var to_day = parseInt(to_date[8]+to_date[9]);
+				var to_hour = parseInt(to_date[11]+to_date[12]);
+				if(to_year<1){
+					alert("結束日期年份不合法");
+				}
+				if(to_month<1 || to_month>12){
+					alert("結束日期月份不合法");
+				}
+				if(to_day<1 || to_day>31){
+					alert("結束日期日子不合法");
+				}
+				if(to_hour<0 || to_hour>24){
+					alert("結束日期小時不合法");
+				}
+			}
+		}
+
+		// 儲存活動
 
     try {
       await postTweet({
