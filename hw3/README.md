@@ -1,9 +1,14 @@
-# 112-1-unit2-twitter-clone
+# HW3 - Join Me!
+Basic functions and requirements are "barely" done. 
+(About the valid date checking, I don't have enoght time to check all the restrictions...since I go to 地調二 held during 11/03(五)~11/06(一).)
 
-See the live demo here: [https://112-1-unit2-twitter-clone.vercel.app/](https://112-1-unit2-twitter-clone.vercel.app/)
-If you have any questions about this repo, feel free to open an issue on this repo or contact me at [eewebprogramming@googlegroups.com](mailto:eewebprogramming@googlegroups.com?subject=twitter-clone%20question)
+After "yarn dev", please open "http://localhost:3000" and enter your name & id first. 
+Then you can add a new activity or check other activities held by other users, and test other funtions.
+As for the "check icon", if you have an existed account and you `re-login`, the "check icon" will turn blue after you refreshing the page.
 
-I update this repo every now and then, so make sure to pull the latest changes with `git pull` before you start working on the project. I will mostly be adding documentation and comments, so you don't have to worry about new updates breaking your code.
+Have a nice day! Thanks a lot!
+
+Below descriptions are the same as the 112-1-unit2-twitter-clone. Thanks!
 
 ## Running the app
 

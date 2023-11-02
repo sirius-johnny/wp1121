@@ -191,9 +191,9 @@ export default function AddNewTweet({
 
   return(
 		<>
-			<button className="m-3 border-yellow-200 bg-red-300" onClick={() => setDialogOpen(true)}>
+			<Button className="m-3 border-yellow-200 bg-red-300" onClick={() => setDialogOpen(true)}>
 				新增活動
-			</button>
+			</Button>
 			<Dialog open={dialogOpen} onOpenChange={handleOpenChange}>
 				<DialogContent className="sm:max-w-[425px]">
 					<DialogHeader>

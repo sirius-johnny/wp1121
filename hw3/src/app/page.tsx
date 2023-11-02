@@ -2,6 +2,7 @@ import { eq, desc, isNull, sql } from "drizzle-orm";
 
 import NameDialog from "@/components/NameDialog";
 import Tweet from "@/components/Tweet";
+import SearchBar from "@/components/SearchBar";
 import AddNewTweet from "@/components/AddNewTweet";
 import { Separator } from "@/components/ui/separator";
 import { db } from "@/db";
@@ -12,6 +13,7 @@ type HomePageProps = {
   searchParams: {
     username?: string;
     handle?: string;
+    keyword?: string;
   };
 };
 
@@ -24,7 +26,7 @@ type HomePageProps = {
 // any where. There are already libraries that use react to render to the terminal,
 // email, PDFs, native mobile apps, 3D objects and even videos.
 export default async function Home({
-  searchParams: { username, handle },
+  searchParams: { username, handle, keyword },
 }: HomePageProps) {
   if (username && handle) {
     await db
@@ -135,6 +137,15 @@ export default async function Home({
 
   var tweets_lens = (!tweets)? 1: tweets.length+1; // 這邊要思考一下ㄟ
 
+  // if(keyword){
+  //   const tweets_filter = tweets.filter((tweets) => {
+  //   return tweets.content.includes(keyword);});
+  // }
+  
+  const post_tweets = (!keyword)? tweets: tweets.filter((tweets) => {return tweets.content.includes(keyword);});
+  
+  
+
   return (
     <>
       <div className="flex h-screen w-full max-w-2xl flex-col overflow-scroll pt-2">
@@ -143,7 +154,9 @@ export default async function Home({
           tweets_len={tweets_lens} 
         />
         <Separator />
-        {tweets.map((tweet) => (
+        <SearchBar />
+        <Separator />
+        {post_tweets.map((tweet) => (
           <Tweet
             key={tweet.id}
             id={tweet.id}
