@@ -1,5 +1,6 @@
 # HW3 - Join Me!
 Basic functions and requirements are "barely" done. 
+
 (About the valid date checking, I don't have enoght time to check all the restrictions...since I go to 地調二 held during 11/03(五)~11/06(一).)
 
 After "yarn dev", please open "http://localhost:3000" and enter your name & id first. 
