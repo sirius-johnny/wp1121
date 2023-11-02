@@ -7,6 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import { db } from "@/db";
 import { likesTable, tweetsTable, usersTable } from "@/db/schema";
 
+
 type HomePageProps = {
   searchParams: {
     username?: string;

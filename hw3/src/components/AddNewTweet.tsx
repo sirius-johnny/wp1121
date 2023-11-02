@@ -30,7 +30,7 @@ export default function AddNewTweet({
 	const [dialogOpen, setDialogOpen] = useState(false);
 	const router = useRouter();
 	const pathname = usePathname();
-  const searchParams = useSearchParams();
+  	const searchParams = useSearchParams();
 	const contentInputRef = useRef<HTMLInputElement>(null);
 	const fromInputRef = useRef<HTMLInputElement>(null);
 	const toInputRef = useRef<HTMLInputElement>(null);
@@ -191,7 +191,7 @@ export default function AddNewTweet({
 
   return(
 		<>
-			<button onClick={() => setDialogOpen(true)}>
+			<button className="m-3 border-yellow-200 bg-red-300" onClick={() => setDialogOpen(true)}>
 				新增活動
 			</button>
 			<Dialog open={dialogOpen} onOpenChange={handleOpenChange}>
