@@ -1,9 +1,6 @@
-import Link from "next/link";
-
 import { Separator } from "@/components/ui/separator";
 import { getAvatar } from "@/lib/utils";
 
-import LikeButton from "./LikeButton";
 import TimeText from "./TimeText";
 
 type ReplyProps = {

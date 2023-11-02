@@ -3,11 +3,8 @@
 import { useState } from "react";
 import type { EventHandler, MouseEvent } from "react";
 
-import { Check } from "lucide-react";
-
 import useLike from "@/hooks/useLike";
 import { cn } from "@/lib/utils";
-import { like } from "drizzle-orm";
 
 type JoinButtonProps = {
   initialLikes: number;

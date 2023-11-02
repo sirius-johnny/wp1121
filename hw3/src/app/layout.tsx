@@ -6,7 +6,6 @@ import { Separator } from "@/components/ui/separator";
 
 // import global styles for tailwind to work
 import "./globals.css";
-import { Link } from "lucide-react";
 
 // nextjs provides helper functions to load google fonts
 // read more about fonts in nextjs here:

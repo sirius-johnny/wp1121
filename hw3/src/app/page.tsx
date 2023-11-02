@@ -2,7 +2,6 @@ import { eq, desc, isNull, sql } from "drizzle-orm";
 
 import NameDialog from "@/components/NameDialog";
 import Tweet from "@/components/Tweet";
-import TweetInput from "@/components/TweetInput";
 import AddNewTweet from "@/components/AddNewTweet";
 import { Separator } from "@/components/ui/separator";
 import { db } from "@/db";

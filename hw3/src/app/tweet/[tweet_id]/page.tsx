@@ -4,10 +4,7 @@ import { redirect } from "next/navigation";
 import { eq, desc, sql, and, asc } from "drizzle-orm";
 import {
   ArrowLeft,
-  MessageCircle,
   MoreHorizontal,
-  Repeat2,
-  Share,
 } from "lucide-react";
 
 import JoinButton from "@/components/JoinButton";
